@@ -9,7 +9,7 @@ import Form from 'react-bootstrap/Form';
 export function SignIn() {
 
   return (
-    <div className="container d-flex flex-column justify-content-center align-items-center vh-100">
+    <div className="container d-flex flex-column justify-content-center align-items-center __container">
       <div className='container__content'>
         <Form className='content__form border'>
           <h1 className='h3 text-center'>Acesso à Lista Telefônica</h1>

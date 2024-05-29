@@ -1,0 +1,15 @@
+.__container{
+  margin-top: 140px;
+}
+
+.container__content {
+  width: 100%;
+  max-width: 350px;
+}
+
+.content__form {
+  padding: 16px;
+  margin-bottom: 22px;
+  border-radius: var(--bs-border-radius);
+}
+

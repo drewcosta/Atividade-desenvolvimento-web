@@ -1,4 +1,4 @@
-import './SignUp.css';
+import './SignUp.modules.css';
 
 import { Divider } from '../../Components/Divider';
 

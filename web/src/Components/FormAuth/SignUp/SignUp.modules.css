@@ -1,7 +1,3 @@
-.__container{
-  margin-top: 140px;
-}
-
 .container__content {
   width: 100%;
   max-width: 350px;
@@ -13,3 +9,8 @@
   border-radius: var(--bs-border-radius);
 }
 
+@media (min-width: 576px) {
+  .__container {
+    margin-top: 50px;
+  }
+}

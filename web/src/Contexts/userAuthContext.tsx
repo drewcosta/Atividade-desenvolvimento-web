@@ -27,7 +27,7 @@ export function UserAuthProvider({ children }: { children: ReactNode }) {
     const hasUser: IUser[] = usersDB?.filter((user: IUser) => user.email === email);
 
     if (hasUser.length) {
-      if (hasUser[0]?.email === email && hasUser[0].password) {
+      if (hasUser[0]?.email === email && hasUser[0].password === password) {
         const newToken = Math.random().toString(36).substring(2);
 
         localStorage.setItem("user_token", JSON.stringify({ email, newToken }));

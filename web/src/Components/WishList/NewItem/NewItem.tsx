@@ -43,8 +43,10 @@ export function NewItem({ updateWishlist, searchItem, setSearchItem }: newProduc
     <>
       <Stack direction="horizontal" className="mb-3">
         <input
+          style={{width: "100%", maxWidth: "250px", marginRight: "5px"}}
           type="text"
           placeholder="buscar produto"
+          className="form-control"
           value={searchItem}
           onChange={setSearchItem}
         />

@@ -14,10 +14,12 @@ const client = new MongoClient(uri, {
 async function connectToDB() {
   try {
     await client.connect();
-    const db = client.db("usersdb");
+    console.log("Conectado ao MongoDB!");
+    const db = client.db("wishlistdb");
     return db;
   } catch (err) {
-    console.log(err);
+    console.error("Erro ao conectar ao MongoDB:", err);
+    throw err;
   }
 }
 

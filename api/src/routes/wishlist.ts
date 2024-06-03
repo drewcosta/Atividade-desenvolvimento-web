@@ -10,7 +10,6 @@ router.get('/wishlist', async (req: Request, res: Response) => {
     const db = await connectToDB();
     const wishlist = await db.collection("wishlist").find({}).toArray();
 
-    res.json({ message: 'Funcionando!' });
     res.status(200).json(wishlist);
   } catch (error) {
     res.status(500).json({ error: `Falha na requisição` });

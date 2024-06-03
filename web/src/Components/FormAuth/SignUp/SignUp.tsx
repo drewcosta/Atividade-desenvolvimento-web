@@ -86,8 +86,8 @@ export function SignUp() {
     <div className="container d-flex flex-column justify-content-center align-items-center __container">
       <div className='container__content'>
         <Form className='content__form border' onSubmit={handleSubmit}>
-          <h1 className='h3 text-center'>Acesso à Lista de compras</h1>
-          <p className='text-center'>Preencha os dados abaixo para o acesso.</p>
+          <h1 className='h3 text-center'>Cadastro</h1>
+          <p className='text-center'>Preencha os dados abaixo para realizar o cadastro.</p>
 
           <Divider />
 

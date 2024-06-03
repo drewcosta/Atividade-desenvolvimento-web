@@ -12,7 +12,7 @@ export function Header() {
           <div className='stack__image--size'>
             <Image src={logo} alt='logo' fluid />
           </div>
-          <h5>App List</h5>
+          <h5>Wish List</h5>
         </Stack>
       </Stack>
     </>

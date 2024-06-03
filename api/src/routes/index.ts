@@ -1,3 +1,3 @@
-import userRoutes from "./users";
+import wishlistRoutes from "./wishlist";
 
-export { userRoutes };
+export { wishlistRoutes };

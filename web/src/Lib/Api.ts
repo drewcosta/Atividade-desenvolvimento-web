@@ -1,5 +1,5 @@
 import axios from "axios";
-import { WishlistItem } from '../Types/WishlistItem.interface'
+import { WishlistItem, newWishListItem } from '../Types/WishlistItem.interface'
 
 export const axiosConfig = axios.create({
   baseURL: 'http://localhost:3333',
@@ -15,7 +15,16 @@ const api = {
       throw error;
     }
   },
-  postWishList: async (item: WishlistItem) => {
+  getWishListItem: async (itemId: string) => {
+    try {
+      const res = await axiosConfig.get(`/wishlist/${itemId}`);
+      return res.data;
+    } catch (error) {
+      console.error("Error getting wishlist item", error);
+      throw error;
+    }
+  },
+  postWishList: async (item: newWishListItem) => {
     try {
       const res = await axiosConfig.post('/wishlist', item);
       return res.data;

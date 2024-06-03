@@ -1,4 +1,3 @@
-import './SignUp.modules.css';
 import { ChangeEvent, FormEventHandler, useState } from 'react';
 
 import { useAuth } from '../../../Hooks';

@@ -1,6 +1,7 @@
 import './SignIn.modules.css';
 import { ChangeEvent, FormEventHandler, useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../..//Hooks';
 
 import { Divider } from '../../Divider';
@@ -17,7 +18,8 @@ interface FormState {
 export function SignIn() {
 
   const { signin } = useAuth();
-  
+  const navigate = useNavigate();
+
   const [form, setForm] = useState<FormState>({
     email: '',
     password: '',
@@ -25,7 +27,7 @@ export function SignIn() {
 
   const [errors, setErrors] = useState<Record<string, string | null>>({});
 
-  const [hasUser, setHasUser] = useState();
+  const [userResponse, setUserResponse] = useState("");
 
   const setField = (field: string, value: string) => {
     setForm({
@@ -43,13 +45,17 @@ export function SignIn() {
 
   const validateForm = () => {
     const { email, password } = form;
-    const newErrors: Record<string, string> = {};
+    const fieldErrors: Record<string, string> = {};
 
-    if (!email || email === '' || !validateField(email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/)) newErrors.email = "Insira um email válido."
-    if (!password || password === '' || !validateField(password, /^.{4,20}$/)) newErrors.password = "A senha deve ter entre 4 e 20 caracteres."
+    if (!email || email === '' || !validateField(email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/)) fieldErrors.email = "Insira um email válido."
+    if (!password || password === '' || !validateField(password, /^.{4,20}$/)) fieldErrors.password = "A senha deve ter entre 4 e 20 caracteres."
 
-    return newErrors;
+    return fieldErrors;
   }
+
+  const validateField = (value: string, regex: RegExp): boolean => {
+    return regex.test(value);
+  };
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
@@ -63,23 +69,11 @@ export function SignIn() {
       const res = signin(form.email, form.password);
 
       if (res) {
-        return console.log(res)
+        setUserResponse(res)
+      } else {
+        navigate('/management');
       }
-      resetForm();
     }
-  }
-
-  const validateField = (value: string, regex: RegExp): boolean => {
-    return regex.test(value);
-  };
-
-  const resetForm = () => {
-    const resetFields = Object.keys(form).reduce((allKeys, key) => {
-      allKeys[key as keyof FormState] = '';
-      return allKeys;
-    }, {} as FormState);
-
-    setForm(resetFields);
   }
 
   return (
@@ -118,6 +112,7 @@ export function SignIn() {
           <Button variant="success" className='w-100' type="submit">
             Acessar
           </Button>
+          <span className='span--error'>{userResponse}</span>
         </Form>
 
         <Divider><h5>Novo usuário?</h5></Divider>

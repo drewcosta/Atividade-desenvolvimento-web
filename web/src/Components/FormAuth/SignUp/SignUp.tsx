@@ -25,7 +25,7 @@ export function SignUp() {
 
   const [errors, setErrors] = useState<Record<string, string | null>>({});
 
-  const [hasUser, setHasUser] = useState();
+  const [userResponse, setUserResponse] = useState("");
 
   const setField = (field: string, value: string) => {
     setForm({
@@ -51,6 +51,10 @@ export function SignUp() {
     return newErrors;
   }
 
+  const validateField = (value: string, regex: RegExp): boolean => {
+    return regex.test(value);
+  };
+
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
 
@@ -63,20 +67,17 @@ export function SignUp() {
       const res = signup(form.email, form.password);
 
       if (res) {
-        return console.log(res)
+        setUserResponse(res);
+        return
       }
       resetForm();
     }
   }
 
-  const validateField = (value: string, regex: RegExp): boolean => {
-    return regex.test(value);
-  };
-
   const resetForm = () => {
-    const resetFields = Object.keys(form).reduce((allKeys, key) => {
-      allKeys[key as keyof FormState] = '';
-      return allKeys;
+    const resetFields = Object.keys(form).reduce((fieldForm, key) => {
+      fieldForm[key as keyof FormState] = '';
+      return fieldForm;
     }, {} as FormState);
 
     setForm(resetFields);
@@ -118,6 +119,7 @@ export function SignUp() {
           <Button variant="success" className='w-100' type="submit">
             Cadastrar
           </Button>
+          <span className='span--error'>{userResponse}</span>
         </Form>
 
         <Divider><h5>Já tem conta?</h5></Divider>

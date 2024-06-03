@@ -1,3 +1,13 @@
+.span--error{
+  font-size: 14px;
+  color: red;
+}
+
+.span--success{
+  font-size: 14px;
+  color: grenn;
+}
+
 .container__content {
   width: 100%;
   max-width: 350px;

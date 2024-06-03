@@ -32,7 +32,7 @@ export function Landing() {
           </div>
         </Stack>
 
-        <Stack direction='horizontal' className='m-auto flex-wrap mt-lg-5 gap-2'>
+        <Stack direction='horizontal' className='m-2 justify-content-xxl-around align-items-center flex-wrap mt-lg-5 gap-2'>
           <Card>
             <Card.Img variant="top" src={iconProfile} />
             <Card.Body>

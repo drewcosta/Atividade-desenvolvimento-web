@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 // pages
-import { Landing, Register } from "../Pages";
+import { Landing, Management, Register } from "../Pages";
 
 // components
 import { DefaultLayout } from "../Components/Layout";
@@ -20,10 +20,10 @@ const router = createBrowserRouter([
       {
         element: <DefaultLayout />,
         children: [
-          // {
-          //   path: '/list',
-          //   element: <List />,
-          // }
+          {
+            path: '/management',
+            element: <Management />,
+          }
         ]
       }
     ],

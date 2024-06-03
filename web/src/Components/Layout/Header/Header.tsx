@@ -14,7 +14,11 @@ import { useAuth } from '../../../Hooks';
 
 export function Header() {
 
-  const { signed } = useAuth();
+  const { signed, signout } = useAuth();
+
+  const handleLogout = () => {
+    signout();
+  }
 
   return (
     <>
@@ -26,7 +30,7 @@ export function Header() {
           <h5>Wish List</h5>
         </Stack>
 
-        {signed && <Button variant='success' className='ms-auto'>Sair</Button>}
+        {signed && <Button variant='success' className='ms-auto' onClick={handleLogout}>Sair</Button>}
       </Stack>
       <Divider />
     </>

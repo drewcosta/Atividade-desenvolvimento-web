@@ -70,7 +70,6 @@ export function WishList() {
       const item = await api.getWishListItem(itemId);
       setUpdateItem(item);
       handleShowModal();
-      console.log(item)
     } catch (error) {
       console.error("Error getting wishlist item details:", error);
     }
@@ -80,7 +79,7 @@ export function WishList() {
     try {
       await api.putWishList(itemId, updateItem);
       const updateItems = items.map(item =>
-        item._id === itemId ? { ...item, ...updateItem } : item
+        item._id === itemId ? updateItem : item
       );
       setItems(updateItems);
       handleShowModal();
@@ -88,6 +87,7 @@ export function WishList() {
       console.error("Error getting wishlist item details:", error);
     }
   }
+
 
   return (
     <>
@@ -103,7 +103,7 @@ export function WishList() {
           </thead>
           <tbody>
             {wishlistItems.map((item, index) => (
-              <tr key={index}>
+              <tr className='align-baseline' key={index}>
                 <td>{index + 1}</td>
                 <td>{item.name}</td>
                 <td>{item.price}</td>
@@ -150,7 +150,7 @@ export function WishList() {
           <Button variant="secondary" onClick={handleCloseModal}>
             Cancelar
           </Button>
-          <Button variant="success" onClick={() => handleUpdateItem(updateItem?._id)}>
+          <Button variant="success" onClick={() => handleUpdateItem(updateItem._id)}>
             Salvar
           </Button>
         </Modal.Footer>

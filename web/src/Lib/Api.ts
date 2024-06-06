@@ -33,7 +33,7 @@ const api = {
       throw error;
     }
   },
-  putWishList: async (itemId: string, updatedItem: WishlistItem) => {
+  putWishList: async (itemId: string, updatedItem: Partial<WishlistItem>) => {
     try {
       const res = await axiosConfig.put(`/wishlist/${itemId}`, updatedItem);
       return res.data;

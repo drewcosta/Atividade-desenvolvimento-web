@@ -76,18 +76,18 @@ export function WishList() {
   };
 
   const handleUpdateItem = async (itemId: string) => {
+    const { _id, ...updatedFields } = updateItem;
     try {
-      await api.putWishList(itemId, updateItem);
-      const updateItems = items.map(item =>
+      await api.putWishList(itemId, updatedFields);
+      const updatedItems = items.map(item =>
         item._id === itemId ? updateItem : item
       );
-      setItems(updateItems);
-      handleShowModal();
+      setItems(updatedItems);
+      handleCloseModal();
     } catch (error) {
       console.error("Error getting wishlist item details:", error);
     }
   }
-
 
   return (
     <>
@@ -103,17 +103,17 @@ export function WishList() {
           </thead>
           <tbody>
             {wishlistItems.map((item, index) => (
-              <tr className='align-baseline' key={index}>
-                <td>{index + 1}</td>
-                <td>{item.name}</td>
-                <td>{item.price}</td>
-                <td>
-                  <ButtonGroup>
-                    <Button variant='white' onClick={() => handleEditItem(item?._id)}><Image src={iconPencil} /></Button>
-                    <Button variant='white' onClick={() => handleDeleteItem(item?._id)}><Image src={iconTrash} /></Button>
-                  </ButtonGroup>
-                </td>
-              </tr>
+                <tr className='align-baseline' key={index}>
+                  <td>{index + 1}</td>
+                  <td>{item.name}</td>
+                  <td>{item.price}</td>
+                  <td>
+                    <ButtonGroup>
+                      <Button variant='white' onClick={() => handleEditItem(item?._id)}><Image src={iconPencil} /></Button>
+                      <Button variant='white' onClick={() => handleDeleteItem(item?._id)}><Image src={iconTrash} /></Button>
+                    </ButtonGroup>
+                  </td>
+                </tr>
             ))}
           </tbody>
         </Table>

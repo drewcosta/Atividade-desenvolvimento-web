@@ -13,12 +13,12 @@ PDF:
 ```bash
 https://github.com/drewcosta/Atividade-desenvolvimento-web.git
 ```
-2. Entre nas respesctivas pastas:
+2. Entre nas respectivas pastas:
 ```bash
 cd web
 cd api
 ```
-3. Instale as dependências:
+3. Instale as dependências em ambos:
 ```bash
 npm install
 ```

@@ -11,7 +11,7 @@ PDF:
 
 1. Faça um clone deste repositório:
 ```bash
-https://github.com/drewcosta/Atividade-desenvolvimento-web.git
+https://github.com/Check-Feira/PAM2.git
 ```
 2. Entre nas respectivas pastas:
 ```bash
